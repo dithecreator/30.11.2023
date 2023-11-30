@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. Написать функцию, которая принимает 2 числа и возвращает -1,
+        //  если первое меньше, чем второе; 1 – если первое больше, чем второе;
+        //   и 0 – если числа равны.
+
+
+        function compare(){
+            let num1 = parseInt(prompt("введите первое число: "));
+            let num2 = parseInt(prompt("введите второе число: "));
+            if(num1 > num2){
+                return 1;
+            }
+            if(num1 < num2){
+                return -1;
+            }
+            if(num1 === num2){
+                return 0;
+            }
+        }
+
+        // 2. Написать функцию, которая вычисляет факториал переданного ей числа.
+        function factorial(){
+            let number = parseInt(prompt("введите число: "));
+            let result = number;
+            for(let i = number - 1; i > 0; i--){
+                result *= i;
+              
+            }
+
+            document.write(result);
+        }
+
+
+        // 3. Написать функцию, которая принимает три отдельные цифры и превращает их в 
+        // одно число. Например: цифры 1, 4, 9 превратятся в число 149.
+         function threeToOne(){
+let num1 = parseInt(prompt("введите первое число: "));
+let num2 = parseInt(prompt("введите второе число: "));
+let num3 = parseInt(prompt("введите третье число: "));
+if(num1 >= 10 && num2 >= 10 && num3 >= 10){
+document.write("вы ввели больше, чем одну цифру");
+}
+else{
+    let result = num1.toString() + num2.toString() + num3.toString();
+    document.write(result);
+}
+        }
+
+
+        // 4. Написать функцию, которая принимает длину и ширину прямоугольника
+        //  и вычисляет его площадь. Если в функцию передали 1 параметр, то она 
+        //  вычисляет площадь квадрата.
+
+       function getZone(){ //тут я не дочитал условия и сделал с запросом, жалко удалять
+            let width = parseInt(prompt("введите ширину: "));
+            let lengthh = parseInt(prompt("введите длину: "));
+            let result = 0;
+            if(lengthh <= null || width <= 0){
+                result = Math.pow(width, 2);
+                document.write("площадь квадрата: " + result + "<br>");
+            }
+            else{
+                result = width * lengthh;
+                document.write("площадь прямоугольника: " + result + "<br>");
+            }
+        }
+
+    
+       function getZone1(){ //это по заданию
+        let result = 0;
+
+        if(arguments.length === 1){
+            result = Math.pow(arguments[0], 2);
+                document.write("площадь квадрата: " + result + "<br>");
+        }
+
+        else{
+                result = arguments[0] * arguments[1];
+                document.write("площадь прямоугольника: " + result + "<br>");
+            }
+       }
+
+
+    //    5. Написать функцию, которая проверяет, является ли переданное ей число совершенным.
+    //      Совершенное число – это число, равное сумме всех своих собственных делителей.
+    function perfectNumbers(){
+        let number = parseInt(prompt("введите число: "));
+        let sum = 0;
+
+for (let i = 1; i < number; i++) {
+    if (number % i === 0) {
+        sum += i;
+    }
+}
+
+if( number === sum){
+    document.write("число является совершенным <br>");
+}
+
+else{
+    document.write("число не является совершенным <br>");
+}
+    }
+
+
+
+    // 6. Написать функцию, которая принимает минимальное и максимальное значения
+    //  для диапазона, и выводит только те числа из диапазона, которые являются 
+    //  совершенными. Используйте написанную ранее функцию, чтобы узнавать,
+    //   совершенное число или нет.
+
+   function helpPerfectNumbers(){
+let min = parseInt(prompt("введите нижнюю границу диапазона: "));
+let max = parseInt(prompt("введите верхнюю границу диапазона: "));
+let sum = 0;
+
+for(let i = min; i < max; i++){
+    sum = 0;
+    for (let j = 1; j < i; i++) {
+    if (i % j === 0) {
+        sum += j;
+    }
+}
+
+if(i === sum){
+    document.write("совершенные числа: " + i + " ");
+}
+}
+    }
+
+    // Написать функцию, которая принимает время (часы, мину- ты, секунды) и выводит его на экран в формате «чч:мм:сс».
+    // Если при вызове функции минуты и/или секунды не были переданы, то выводить их как 00.
+    function time(){
+        let hours = parseInt(prompt("введите часы: "));
+        let minutes = parseInt(prompt("введите минуты: "));
+        let seconds = parseInt(prompt("введите секунды: "));
+        let date = new Date();
+        if(minutes < 1 || minutes > 59 && seconds < 1 && seconds > 59){
+            minutes = 0;
+            seconds = 0;
+        }
+
+        date.setHours(hours);
+        date.setMinutes(minutes);
+        date.setSeconds(seconds);
+        document.write(date);
+
+    }
+
+
+
+    // 8. Написать функцию, которая принимает часы, минуты и секунды и возвращает это время в секундах.
+   function makeTime(){
+    let hours = parseInt(prompt("введите часы: "));
+        let minutes = parseInt(prompt("введите минуты: "));
+        let seconds = parseInt(prompt("введите секунды: "));
+
+        let hoursToSeconds = (hours * 60) * 60;
+        let minutesToSeconds = minutes * 60;
+        let result = hoursToSeconds + minutesToSeconds + seconds;
+        document.write("введённое Вами время: " + hours + " часов, " + minutes + " минут, " + seconds + " секунд" + "<br>");
+        document.write("ответ в секундах: " + result) + "<br>";
+        return result;
+    }
+
+    function makeTime1(hours, minutes, seconds){  //без запроса с клавиатуры
+        let hoursToSeconds = (hours * 60) * 60;
+        let minutesToSeconds = minutes * 60;
+        let result = hoursToSeconds + minutesToSeconds + seconds;
+        document.write("введённое Вами время: " + hours + " часов, " + minutes + " минут, " + seconds + " секунд" + "<br>");
+        document.write("ответ в секундах: " + result + "<br>");
+        return result;
+    }
+
+
+
+    // 9. Написать функцию, которая принимает количество секунд, переводит их в часы,
+    //  минуты и секунды и возвращает в виде строки «чч:мм:сс».
+    function makeHours(){
+        let seconds = parseInt(prompt("введите секунды: "));
+        let secondsToMinutes = 0;
+        let secondsToHours = 0;
+        if (seconds > 59) {
+        secondsToMinutes = Math.floor(seconds / 60);
+    }
+    if (secondsToMinutes > 59) {
+        secondsToHours = Math.floor(secondsToMinutes / 60);
+    }
+    let lastSeconds = seconds % 60;
+
+        document.write("введённое Вами время: " + secondsToHours + " часов, " + secondsToMinutes + " минут, " + lastSeconds + " секунд" + "<br>");
+    }
+
+    function makeHours1(seconds){ //без запроса с клавиатуры
+        let secondsToMinutes = 0;
+        let secondsToHours = 0;
+        if (seconds > 59) {
+        secondsToMinutes = Math.floor(seconds / 60);
+    }
+    if (secondsToMinutes > 59) {
+        secondsToHours = Math.floor(secondsToMinutes / 60);
+    }
+    let lastMinutes = secondsToMinutes % 60;
+    let lastSeconds = seconds % 60;
+
+        document.write("введённое Вами время: " + secondsToHours + " часов, " + remainingMinutes + " минут, " + lastSeconds + " секунд" + "<br>");
+    }
+
+
+    // 10. Написать функцию,которая считает разницу между датами. Функция принимает 6 параметров,
+    //  которые описывают 2 даты, и возвращает результат в виде строки «чч:мм:сс». При выполнении 
+    //  задания используйте функции из предыдущих 2-х заданий: сначала обе даты переведите в 
+    //  секунды, узнайте разницу в секундах, а потом разницу переведите обратно в «чч:мм:сс».
+    function dateDiff(hours1, minutes1, seconds1, hours2, minutes2, seconds2){
+        let date1 = makeTime1(hours1, minutes1, seconds1);
+        let date2 = makeTime1(hours2, minutes2, seconds2);
+        let secondsDifference = date1 - date2;
+        document.write("разница в секундах составляет: " + secondsDifference + "<br>");
+        let result = makeHours1(secondsDifference);
+    }
+
+
+
+     //compare();
+    // factorial();
+    //threeToOne();
+    //getZone();
+    //getZone1(2, 4);
+   // perfectNumbers();
+   //helpPerfectNumbers();
+   //time();
+   //makeTime();
+   //makeHours();
+   //makeTime1(1, 60, 60);
+   //makeHours1(3605);
+   //dateDiff(12, 12, 10, 5, 5, 6);
+    </script>
+</body>
+</html>
